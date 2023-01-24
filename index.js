@@ -15,7 +15,7 @@ let user;
 // Function Declarations
 function welcome() {
   user = readlinesync.question(`What's your name? `);
-  console.log(`\nWelcome ${user} to ${hightlight(" WERE YOU BORN IN A LEAP YEAR! ")}`);
+  console.log(`\nWelcome ${user} to ${hightlight(" WERE YOU BORN IN A LEAP YEAR CHECKER! ")}`);
 }
 
 function checkDOB(){
