@@ -3,39 +3,40 @@ const readlinesync = require("readline-sync");
 const chalk = require("chalk");
 
 // Productivity
-const success = chalk.bgHex("#3ae374").black;
-const failure = chalk.bgHex("#ff4d4d").black;
-const hightlight = chalk.bgBlueBright.black;
+const success = chalk.hex("#3ae374");
+const failure = chalk.hex("#ff4d4d");
+const hightlight = chalk.blueBright;
 
-// Variable Declarations
-let user;
 
-// Object Declarations
+const user = readlinesync.question(chalk.blue(`Enter Your Name : `));
+console.log(hightlight(`Welcome ${user}`));
 
-// Function Declarations
-function welcome() {
-  user = readlinesync.question(`What's your name? `);
-  console.log(`\nWelcome ${user} to ${hightlight(" WERE YOU BORN IN A LEAP YEAR CHECKER! ")}`);
+const dob = readlinesync.question(chalk.blue(`Enter your birth-date in DD/MM/YY format : `));
+
+function validateDOB(date) {
+  const arr = date.split("/");
+
+  let userDD = arr[0];
+  let userMM = arr[1];
+  let userYY = arr[2];
+
+  if (isNaN(userDD) || isNaN(userMM) || isNaN(userYY) || Number(userDD) < 0 || Number(userMM) < 0 || Number(userYY) < 0 || Number(userDD) > 31 || Number(userMM) > 12
+  ) {
+    console.log(hightlight("Please enter the valid date ❌"));
+  } else {
+    leapYear(userYY);
+  }
 }
 
-function checkDOB(){
-    const dob = readlinesync.question(`Enter your DateOfBirth In the format "DD/MM/YY"? `);
-    const arr = dob.split('/');
-    if(arr.length === 1 || arr[arr.length - 1] === ''){
-        console.log(failure('Wrong Format! ❌ '));
-        return;
-    }
-    const year = arr.pop();
-
-
-    if((year % 4 === 0) || (year % 100 !== 0 && year % 400 === 0)){
-        console.log(success(`Contarts!, You were born on a leap year `));
-        console.log(hightlight(`\nDon't hesitate to take a SNAP share this on your social handles`));
-    } else {
-        console.log(failure(`Sorry!, You were not born on a leap year `));
-    }
+function leapYear(year) {
+  if (year % 4 === 0 || (year % 100 !== 0 && year % 400 === 0)) {
+    console.log(success.underline.bold(`Contrats! ${user}!! your birth year is a leap year`));
+    console.log(hightlight.underline.bold(`Don't hesitate to take a snap share this on your social handles`)
+    );
+  } else {
+    console.log(failure(`${user}!! your birth year is not a leap year`));
+  }
 }
 
 // Invoke Functions
-welcome();
-checkDOB();
+validateDOB(dob);
