@@ -20,7 +20,7 @@ function validateDOB(date) {
   let userMM = arr[1];
   let userYY = arr[2];
 
-  if (isNaN(userDD) || isNaN(userMM) || isNaN(userYY) || Number(userDD) < 0 || Number(userMM) < 0 || Number(userYY) < 0 || Number(userDD) > 31 || Number(userMM) > 12
+  if (isNaN(userDD) || isNaN(userMM) || isNaN(userYY) || Number(userDD) <= 0 || Number(userMM) <= 0 || Number(userYY) <= 0 || Number(userDD) > 31 || Number(userMM) > 12
   ) {
     console.log(hightlight("Please enter the valid date ❌"));
   } else {
