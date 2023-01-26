@@ -21,6 +21,7 @@ Validate birth-date
 
 ## Preview
 
+![Preview](https://user-images.githubusercontent.com/66691162/214772525-e0692347-4b18-4680-9dcf-bc431c23812b.png)
 
 
 ## TechStack
